@@ -9,12 +9,27 @@ var models = require('../models');
 module.exports = {
   // response should include the 'get'ted messages
   // aim: send back the fetched messages
-  get: function (req, res) {}, // a function which handles a get request for all messages
+
+  // possible data: { order: '-createdAt' },
+  get: function (req, res) {
+    const data = req.body;
+    models.messages.getAll(null, (err, messages) => {
+      if (err) {
+        res.status(503).end();
+      } else {
+        if (data.order === '-createdAt') {
+          console.log('getting reversed');
+          messages.reverse();
+          console.log(messages);
+        }
+        res.status(200).json(messages);
+      }
+    });
+  }, // a function which handles a get request for all messages
   // request will be holding the message as data
   // aim: store incoming message in db
   post: function (req, res) {
     const message = req.body;
-    console.log(req.body);
     models.users.getAll(null, (err, usernames) => {
       if (err) {
         res.status(503).end();

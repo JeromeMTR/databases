@@ -10,6 +10,7 @@
   },
   "scripts": {
     "start": "node ./server/app.js",
+    "start:client": "npx live-server --port=1337",
     "start:nodemon": "nodemon ./server/app.js",
     "start:es6": "npx babel-node ./server/app.js",
     "test": "jest",
@@ -19,10 +20,12 @@
     "axios": "^0.21.0",
     "cors": "^2.8.5",
     "express": "4.17.1",
+    "jquery": "^3.5.1",
     "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
-    "sequelize": "^6.3.5",
-    "nodemon": "^2.0.18"
+    "nodemon": "^2.0.18",
+    "sequelize": "^6.21.1",
+    "underscore": "^1.13.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",

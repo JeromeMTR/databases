@@ -22,21 +22,22 @@ var App = {
 
     // Poll for new messages every 3 sec
     setInterval(App.fetch, 3000);
-      },
+  },
 
   fetch: function(callback = ()=>{}) {
+    console.log('fetching');
     Parse.readAll((data) => {
-
+      console.log(data);
       // Only update if we have messages.
       if (data && data.length) {
         Rooms.update(data, RoomsView.render);
         Messages.update(data, MessagesView.render);
- 
+
         callback();
       }
       return;
-      
-          });
+
+    });
   },
 
   startSpinner: function() {

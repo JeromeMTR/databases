@@ -4,7 +4,7 @@
  */
 
 var Sequelize = require('sequelize');
-var db = new Sequelize('chatter', 'root', '');
+var db = new Sequelize('chat', 'root', '', {dialect: 'mysql'});
 /* TODO this constructor takes the database name, username, then password.
  * Modify the arguments if you need to */
 
@@ -12,12 +12,16 @@ var db = new Sequelize('chatter', 'root', '');
  * See http://sequelizejs.com for other datatypes you can use besides STRING. */
 var User = db.define('User', {
   username: Sequelize.STRING
+}, {
+  timestamps: false,
 });
 
 var Message = db.define('Message', {
-  userid: Sequelize.INTEGER,
-  text: Sequelize.STRING,
+  'user_id': Sequelize.INTEGER,
+  content: Sequelize.STRING,
   roomname: Sequelize.STRING
+}, {
+  timestamps: false,
 });
 
 /* Sequelize comes with built in support for promises

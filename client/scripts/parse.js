@@ -4,19 +4,13 @@
 
 var Parse = {
 
-  // TODO: set this url to our own local server
-  server: `https://app-hrsei-api.herokuapp.com/api/chatterbox/messages/${window.CAMPUS}`,
+  server: '127.0.0.1:3000/classes/messages',
 
   create: function(message, successCB, errorCB = null) {
 
     $.ajax({
-      url: Parse.server,
+      url: 'http://127.0.0.1:3000/classes/messages',
       type: 'POST',
-      // var message = {
-      //   username: App.username,
-      //   text: FormView.$form.find('#message').val(),
-      //   roomname: Rooms.selected || 'lobby'
-      // };
       data: JSON.stringify(message),
       contentType: 'application/json',
       success: successCB,
@@ -28,7 +22,7 @@ var Parse = {
 
   readAll: function(successCB, errorCB = null) {
     $.ajax({
-      url: Parse.server,
+      url: 'http://127.0.0.1:3000/classes/messages',
       type: 'GET',
       data: { order: '-createdAt' },
       contentType: 'application/json',

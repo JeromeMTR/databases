@@ -14,6 +14,15 @@ module.exports = {
         callback(err);
       } else {
         // transform
+        results = results.map((object, i) => {
+          return {
+            username: object.username,
+            text: object.content,
+            roomname: object.roomname,
+            'message_id': i,
+          };
+        });
+        console.log(results);
         callback(null, results);
       }
     });
@@ -36,4 +45,3 @@ module.exports = {
   }
 };
 
-// {"username":"jerome","text":"hello world","roomname":"zoom"}

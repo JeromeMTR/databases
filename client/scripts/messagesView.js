@@ -20,7 +20,7 @@ var MessagesView = {
       },
 
   renderMessage: function(message) {
-
+    console.log(message);
     var $message = MessageView.render(message);
     MessagesView.$chats.prepend($message);
       },
