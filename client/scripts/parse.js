@@ -4,6 +4,7 @@
 
 var Parse = {
 
+  // TODO: set this url to our own local server
   server: `https://app-hrsei-api.herokuapp.com/api/chatterbox/messages/${window.CAMPUS}`,
 
   create: function(message, successCB, errorCB = null) {
@@ -11,6 +12,11 @@ var Parse = {
     $.ajax({
       url: Parse.server,
       type: 'POST',
+      // var message = {
+      //   username: App.username,
+      //   text: FormView.$form.find('#message').val(),
+      //   roomname: Rooms.selected || 'lobby'
+      // };
       data: JSON.stringify(message),
       contentType: 'application/json',
       success: successCB,
@@ -18,7 +24,7 @@ var Parse = {
         console.error('chatterbox: Failed to create message', error);
       }
     });
-      },
+  },
 
   readAll: function(successCB, errorCB = null) {
     $.ajax({
